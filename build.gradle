@@ -10,13 +10,19 @@ sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
+	maven {
+		url 'https://repo.clojars.org'
+		name 'Clojars'
+	}
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.mysql:mysql-connector-j'
+	implementation 'com.mysql:mysql-connector-j:8.0.31'
 	implementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.data:spring-data-jpa:3.0.0'
+	implementation 'entity:entity-sql:0.1.2'
+	implementation 'org.datanucleus:javax.persistence:2.2.4'
 
 }
 
