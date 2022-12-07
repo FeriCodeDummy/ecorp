@@ -1,9 +1,9 @@
 package si.feri.ris.ecorp.models;
 
-import si.feri.ris.ecorp.dao.ProjectRepository;
-
-import javax.persistence.*;
-import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Project {
@@ -16,15 +16,14 @@ public class Project {
     private String _deadline;
     private String _description;
 
-    // Repos
-    @AutoWired
-    private ProjectRepository projectDao;
-
-
     // Foreign keys
-    @OneToMany(mappedBy = "hisa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private ArrayList<Employee> _employees = new ArrayList<Employee>();
-    private Company _company;
+
+//    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private ArrayList<Employee> _employees = new ArrayList<Employee>();
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JoinColumn(name = "x_id")
+//    private Company _company;
 
     public void assignEmployee(Employee aEmployee) {
         throw new UnsupportedOperationException();
