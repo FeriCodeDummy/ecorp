@@ -22,4 +22,5 @@ public class HumanResources extends Directorate {
     public boolean fireEmployee(Employee aEmployee) {
         throw new UnsupportedOperationException();
     }
+
 }

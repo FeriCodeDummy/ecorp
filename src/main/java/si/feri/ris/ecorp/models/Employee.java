@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 @Entity
 public class Employee extends User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,4 +20,5 @@ public class Employee extends User {
     public double calculateEfficiency() {
         throw new UnsupportedOperationException();
     }
+
 }

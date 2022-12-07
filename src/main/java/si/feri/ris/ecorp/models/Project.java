@@ -16,6 +16,7 @@ public class Project {
     private String _deadline;
     private String _description;
 
+
     // Foreign keys
 
 //    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

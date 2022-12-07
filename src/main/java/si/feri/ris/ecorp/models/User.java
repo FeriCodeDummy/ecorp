@@ -15,4 +15,5 @@ public abstract class User {
     protected String _surname;
     protected String _email;
     protected int _age;
+
 }

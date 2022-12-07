@@ -22,4 +22,5 @@ public class Company {
     public String getStats(){
         return "Company: " + name + ", at: " + headquarters + ". Networth: " + networth;
     }
+
 }

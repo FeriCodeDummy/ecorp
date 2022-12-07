@@ -19,6 +19,7 @@ public class CEOController {
     public Iterable<CEO> returnCEOs(){
         return ceoDao.returnCEO();
     }
+
 //    @GetMapping("/type/{ceo}")
 //    public Iterable<CEO> returnCEO(@PathVariable(name = "ceo") String typeName){
 //        return ceoDao.returnCEO(typeName);

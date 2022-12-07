@@ -17,4 +17,5 @@ public abstract class Directorate extends User {
     public String getEmployeesReports() {
         throw new UnsupportedOperationException();
     }
+
 }
