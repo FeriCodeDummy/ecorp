@@ -1,16 +1,29 @@
 package si.feri.ris.ecorp.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-public abstract class Directorate extends User {
+public class Directorate{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "directorate_id")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private Users hr;
+//
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "directorate_id")
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private Users ceo;
+
     /**
      * @return ArrayList
      */

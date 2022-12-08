@@ -1,25 +1,25 @@
 package si.feri.ris.ecorp.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-public class HumanResources extends Directorate {
+public class HumanResources{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    public boolean changeSalary(Employee aEmployee, double aAmount) {
+    public boolean changeSalary(Project_Has_Employees aEmployee, double aAmount) {
         throw new UnsupportedOperationException();
     }
 
-    public boolean hireEmployee(Employee aEmployee) {
+    public boolean hireEmployee(Project_Has_Employees aEmployee) {
         throw new UnsupportedOperationException();
     }
 
-    public boolean fireEmployee(Employee aEmployee) {
+    public boolean fireEmployee(Project_Has_Employees aEmployee) {
         throw new UnsupportedOperationException();
     }
 
