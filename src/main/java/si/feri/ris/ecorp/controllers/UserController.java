@@ -23,7 +23,7 @@ public class UserController {
         return usersDao.findAll();
     }
 
-    @PostMapping(consumes = "application/json")
+    @PostMapping
     public Optional<Users> addUser(@RequestBody Users user)
     {
         return typeDao.findById(Integer.toUnsignedLong(5)).map(type -> {
@@ -43,6 +43,11 @@ public class UserController {
             user.setUsername(ime);
             return usersDao.save(user);
         });
+    }
+
+    @GetMapping("/3param/{comp}/{proj}/{wage}")
+    public Iterable<Users> putUsername(@PathVariable(name = "comp") Long comp, @PathVariable(name = "proj") Long proj, @PathVariable(name = "wage") int wage){
+        return usersDao.findCompProj(comp, proj, wage);
     }
 
     @DeleteMapping("/del/{id}")

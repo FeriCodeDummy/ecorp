@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.List;
+
 @Entity
 public class Users {
     @Id
@@ -24,6 +26,15 @@ public class Users {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     protected UType fk_utype;
+
+    @ManyToMany(mappedBy = "employees")
+    @JsonIgnore
+    private List<Projects> projects;
+
+    @ManyToMany(mappedBy = "users")
+    @JsonIgnore
+    private List<Company> companies;
+
 
     public String getName() {
         return name;

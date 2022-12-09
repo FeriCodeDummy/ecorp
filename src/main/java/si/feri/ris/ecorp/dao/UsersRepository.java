@@ -17,6 +17,12 @@ public interface UsersRepository extends CrudRepository<Users, Long> {
     List<Users> getHR();
     @Query("select u from Users u where u.fk_utype = (select id from UType t where t.name  = 'StockHolder')")
     List<Users> getSH();
+
+    @Query(
+            value= "Select username, wage as \"Salary\" from Users JOIN Company on company.id = 1 JOIN Projects ON projects.id = 1 where users.wage > 1",
+            nativeQuery = true
+    )
+    List<Users> findCompProj(Long comp, Long proj, int wage);
 //
 //    @Modifying
 //    @Query("update Users u set username = ?2 where id = ?1")

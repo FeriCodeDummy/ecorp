@@ -10,6 +10,10 @@ import si.feri.ris.ecorp.models.Users;
 @RestController
 @RequestMapping("/test")
 public class TestController {
+    @GetMapping
+    public String hello(){
+        return "hello";
+    }
 
     @Autowired
     private UTypeRepository utypeDao;
