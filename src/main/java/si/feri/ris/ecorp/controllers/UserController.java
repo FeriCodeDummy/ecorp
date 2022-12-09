@@ -50,6 +50,11 @@ public class UserController {
         return usersDao.findCompProj(comp, proj, wage);
     }
 
+    @GetMapping("/raise/{comp}/{funds}/{wage}")
+    public Iterable<Users> putUsername(@PathVariable(name = "comp") Long comp, @PathVariable(name = "funds") double proj, @PathVariable(name = "wage") double wage){
+        return usersDao.changeWage(comp, proj, wage);
+    }
+
     @DeleteMapping("/del/{id}")
     public Optional<Object> deleteUser(@PathVariable(name = "id") Long id){
         return usersDao.findById(id).map(user -> {
