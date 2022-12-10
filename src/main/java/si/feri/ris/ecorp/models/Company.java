@@ -36,8 +36,8 @@ public class Company {
     @ManyToMany
     @JoinTable(
             name = "company_has_projects",
-            joinColumns = @JoinColumn(name = "fk_project"),
-            inverseJoinColumns = @JoinColumn(name = "fk_company")
+            joinColumns = @JoinColumn(name = "fk_company"),
+            inverseJoinColumns = @JoinColumn(name = "fk_project")
     )
     @JsonIgnore
     Collection<Projects> projects;
