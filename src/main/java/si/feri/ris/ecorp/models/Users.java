@@ -100,4 +100,7 @@ public class Users {
         this.id = id;
     }
 
+    public String getRole() {
+        return fk_utype.getName();
+    }
 }
