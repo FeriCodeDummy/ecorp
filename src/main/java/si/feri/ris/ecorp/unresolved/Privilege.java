@@ -1,8 +1,6 @@
-package si.feri.ris.ecorp.models;
+package si.feri.ris.ecorp.unresolved;
 
 import jakarta.persistence.*;
-
-import java.util.*;
 
 @Entity
 public class Privilege {
@@ -11,7 +9,9 @@ public class Privilege {
     private Long id;
 
     private String name;
-
+    /*
     @ManyToMany(mappedBy = "privileges")
     private Collection<Role> roles;
+
+     */
 }

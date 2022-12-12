@@ -35,14 +35,6 @@ public class Users {
     @JsonIgnore
     private List<Company> companies;
 
-    @ManyToMany
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
 
 
     public String getName() {
@@ -109,7 +101,4 @@ public class Users {
         this.id = id;
     }
 
-    public String getRole() {
-        return fk_utype.getName();
-    }
 }
