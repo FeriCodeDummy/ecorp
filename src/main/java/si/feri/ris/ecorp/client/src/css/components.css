@@ -1,0 +1,99 @@
+body {
+    padding: 5px;
+    background-color: gray;
+}
+.home-section {
+
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 0;
+    padding: 40px 70px 55px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.myform-area{
+    padding: 100px 60px
+}
+
+.login-form{
+    padding: 25px 60px;
+    margin: 25px 10px 10px;
+
+}
+.input-thingy{
+    padding: 5px;
+    margin-top: 5px;
+}
+
+td {
+    vertical-align: middle;
+}
+
+.on {
+    color: #000;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.off {
+    color: #ccc;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.star-rating{
+    justify-self: start;
+}
+
+.parent {
+
+    margin: 1rem;
+    padding: 2rem 2rem;
+    text-align: center;
+}
+.child {
+    display: inline-block;
+
+    padding: 1rem 1rem;
+    vertical-align: middle;
+}
+
+.cardTitle{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.home-img {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.align-middle{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.cardy{
+    padding: 50px;
+    width: 500px;
+    height: 500px;
+}
+
+
+
