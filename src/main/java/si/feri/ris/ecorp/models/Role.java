@@ -12,7 +12,7 @@ public class Role {
 
     private String name;
     @ManyToMany(mappedBy = "roles")
-    private Collection<Users> users;
+    protected List<Users> users;
 
     @ManyToMany
     @JoinTable(
@@ -21,6 +21,6 @@ public class Role {
                     name = "role_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "privilege_id", referencedColumnName = "id"))
-    private Collection<Privilege> privileges;
+    private List<Privilege> privileges;
 
 }

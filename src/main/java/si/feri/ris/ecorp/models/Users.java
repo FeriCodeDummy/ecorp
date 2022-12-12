@@ -20,7 +20,22 @@ public class Users {
     protected String password;
     protected double wage;
 
+    private boolean enabled;
+    private boolean tokenExpired;
+
     // fks
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id")
+    )
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private List<Role> roles;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_utype")
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -34,15 +49,6 @@ public class Users {
     @ManyToMany(mappedBy = "users")
     @JsonIgnore
     private List<Company> companies;
-
-    @ManyToMany
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
 
 
     public String getName() {
