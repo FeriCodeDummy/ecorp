@@ -24,6 +24,8 @@ public class UserController {
 
 
 
+
+
 	@GetMapping
 	public Iterable<Users> getAllUsers(){
 		return usersDao.findAll();
@@ -44,16 +46,39 @@ public class UserController {
 	public boolean login(@RequestBody String body){
 		JSONObject json = new JSONObject(body);
 		String username = json.getString("username");
+		String password = json.getString("password");
+		Optional<Users> users = getByUsername(username);
+		if (users.isEmpty()){
+			Users user= usersDao.findUserByEmail(username);
+			if(Optional.ofNullable(user).isEmpty()){
+				return false;
+			}
+			String passwd = user.getPassword();
+			return new BCryptPasswordEncoder().matches(password, passwd);
+
+		}
+
+		String passwd = users.get().getPassword();
+		return new BCryptPasswordEncoder().matches(password, passwd);
+	}
+
+	@PostMapping("/hashPassword")
+	public String bruteHash(@RequestBody String body){
+		JSONObject json = new JSONObject(body);
+		String username = json.getString("username");
 
 		Optional<Users> users = getByUsername(username);
 		if (users.isEmpty()){
 			System.out.println("Didn't find user with username " + username);
-			return false;
+			return "Didn't find user with username";
 		}
+		Users user = users.get();
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String password = encoder.encode(user.getPassword());
+		user.setPassword(password);
+		usersDao.save(user);
+		return "Password hashed successfully";
 
-		String password = json.getString("password");
-		String passwd = users.get().getPassword();
-		return new BCryptPasswordEncoder().matches(password, passwd);
 	}
 
 	@PostMapping("/changePassword")
@@ -63,6 +88,22 @@ public class UserController {
 		String changePass = json.getString("newPassword");
 		String username = json.getString("username");
 		Optional<Users> users = getByUsername(username);
+		if (users.isEmpty()){
+			Users user= usersDao.findUserByEmail(username);
+			if(Optional.ofNullable(user).isEmpty()){
+				return "User doesn't exist";
+			}
+			String passwd = user.getPassword();
+			if(new BCryptPasswordEncoder().matches(password, passwd)){
+				BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+				String p = encoder.encode(changePass);
+				user.setPassword(p);
+				usersDao.save(user);
+				return "Password updated successfully";
+			}else{
+				return "Password doesn't match";
+			}
+		}
 		Users user = users.get();
 		String passwd = user.getPassword();
 		if(new BCryptPasswordEncoder().matches(password, passwd)){
@@ -90,7 +131,6 @@ public class UserController {
 	}
 
 
-
 	@GetMapping("/3param/{comp}/{proj}/{wage}")
 	public Iterable<Users> putUsername(@PathVariable(name = "comp") Long comp, @PathVariable(name = "proj") Long proj, @PathVariable(name = "wage") int wage){
 		return usersDao.findCompProj(comp, proj, wage);
@@ -103,7 +143,18 @@ public class UserController {
 
 	@GetMapping("/username/{username}")
 	public Optional<Users> getByUsername(@PathVariable(name = "username") String username){
-		return Optional.ofNullable(usersDao.findUserByUsername(username));
+
+		Optional<Users> user = Optional.ofNullable(usersDao.findUserByUsername(username));
+		if(user.isEmpty()){
+			Optional<Users> user_ = Optional.ofNullable(usersDao.findUserByEmail(username.toLowerCase()));
+			if(user_.isEmpty()){
+				return Optional.empty();
+			}
+			return user_;
+		}
+
+		return user;
+		//return Optional.ofNullable(usersDao.findUserByUsername(username));
 	}
 
 

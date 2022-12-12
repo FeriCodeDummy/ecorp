@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import si.feri.ris.ecorp.dao.CompanyRepository;
 import si.feri.ris.ecorp.models.Company;
+import si.feri.ris.ecorp.models.Users;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,6 +29,16 @@ public class CompanyController {
     @GetMapping("/getIf/{proj}/{users}")
     public Iterable<Company> getProjectIf(@PathVariable(name = "proj") int proj,@PathVariable(name = "users") int users){
         return companyDao.getCompIf(proj, users);
+    }
+
+    @GetMapping("/ceo/{id}")
+    public List<Users> getCeoById(@PathVariable(name="id") int id){
+        return companyDao.getCompanyCEO(id);
+    }
+
+    @GetMapping("/hr/{id}")
+    public List<Users> getHrById(@PathVariable(name="id") int id){
+        return companyDao.getCompanyHR(id);
     }
 
 

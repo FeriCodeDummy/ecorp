@@ -29,7 +29,7 @@ function Login(){
 	const [loginUsername, setLoginUsername] = useState("")
 	const [loginPassword, setLoginPassword] = useState("")
 	const [loginStatus, setLoginStatus] = useState(false);
-	const [count, setCount] = useState(0);
+
 	const auth = useAuth();
 	// TODO Make the thing fucking work on backend
 	const login = async () => {
@@ -41,7 +41,8 @@ function Login(){
 			},
 			url: "http://localhost:8180/users/login",
 		}).then((res) => {
-				console.log(res)
+				console.log(res.data);
+				auth.login(res.data.user);
 			}
 		).catch((err)=>{console.log(err)});
 	};

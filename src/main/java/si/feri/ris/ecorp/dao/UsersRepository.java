@@ -21,6 +21,9 @@ public interface UsersRepository extends CrudRepository<Users, Long> {
     @Query("SELECT u from Users u where u.username = ?1")
     Users findUserByUsername(String username);
 
+    @Query(value="SELECT u from Users u where u.email = ?1", nativeQuery = true)
+    Users findUserByEmail(String username);
+
     /*
     select u.name, u.surname, u.username, u.wage from users u
     left JOIN company_has_users c ON c.fk_user = u.id

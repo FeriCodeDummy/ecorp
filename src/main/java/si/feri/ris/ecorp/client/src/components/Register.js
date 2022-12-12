@@ -40,7 +40,7 @@ function Register(){
 				wage: 0 // User is not being paid unless he works at the company
 			},
 			withCredentials: true,
-			url: "http://localhost:8000/api/router.php/user/register",
+			url: "http://localhost:8180/api/router.php/user/register",
 		}).then((r =>{
 				console.log(r);
 			})
