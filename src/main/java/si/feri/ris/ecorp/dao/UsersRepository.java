@@ -18,6 +18,7 @@ public interface UsersRepository extends CrudRepository<Users, Long> {
     @Query("select u from Users u where u.fk_utype = (select id from UType t where t.name  = 'StockHolder')")
     List<Users> getSH();
 
+    @Query("SELECT u from Users u where u.username = ?1")
     Users findUserByUsername(String username);
 
     /*

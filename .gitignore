@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### React ###
+src/main/java/si/feri/ris/ecorp/client/node_modules

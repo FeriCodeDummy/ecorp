@@ -29,8 +29,8 @@ public class UserController {
 		return usersDao.findAll();
 	}
 
-	@PostMapping("/add")
-	public Optional<Users> addUser(@RequestBody Users user)
+	@PostMapping("/register")
+	public Optional<Users> register(@RequestBody Users user)
 	{
 		user.setPassword(encoder.encode(user.getPassword()));
 		return typeDao.findById(Integer.toUnsignedLong(5)).map(type -> {
