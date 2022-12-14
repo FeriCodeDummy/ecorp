@@ -14,9 +14,10 @@ public interface CompanyRepository extends CrudRepository<Company, Long> {
     )
     List<Company> getCompIf(int proj, int users);
 
-    @Query(value = "SELECT Users.id, Users.name, Users.surname, Users.username, Users.password, Users.wage, Users.fk_utype from Users INNER JOIN Directorate ON Users.id = Directorate.ceo INNER JOIN company ON company.fk_directorate = Directorate.id AND Company.id = ?1", nativeQuery = true)
+    //@Query(value = "SELECT Users.id, Users.name, Users.surname, Users.username, Users.password, Users.wage, Users.fk_utype from Users INNER JOIN Directorate ON Users.id = Directorate.ceo INNER JOIN company ON company.fk_directorate = Directorate.id AND Company.id = ?1", nativeQuery = true)
+    @Query(value = "SELECT Users.* from Users INNER JOIN Directorate ON Users.id = Directorate.ceo INNER JOIN company ON company.fk_directorate = Directorate.id AND Company.id = ?1", nativeQuery = true)
     List<Users> getCompanyCEO(int id);
 
-    @Query(value = "SELECT Users.id, Users.name, Users.surname, Users.username, Users.password, Users.wage, Users.fk_utype  from Users INNER JOIN Directorate ON Users.id = Directorate.hr INNER JOIN company ON company.fk_directorate = Directorate.id AND Company.id = ?1;", nativeQuery = true)
+    @Query(value = "SELECT Users.* from Users INNER JOIN Directorate ON Users.id = Directorate.hr INNER JOIN company ON company.fk_directorate = Directorate.id AND Company.id = ?1", nativeQuery = true)
     List<Users> getCompanyHR(int id);
 }

@@ -32,13 +32,12 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-	public Optional<Users> register(@RequestBody Users user)
+	public Long register(@RequestBody Users user)
 	{
 		user.setPassword(encoder.encode(user.getPassword()));
-		return typeDao.findById(Integer.toUnsignedLong(5)).map(type -> {
-			user.setFk_utype(type);
-			return usersDao.save(user);
-		});
+		usersDao.save(user);
+		return usersDao.findUserByUsername(user.getUsername()).getId();
+
 	}
 
 
