@@ -20,4 +20,5 @@ public interface CompanyRepository extends CrudRepository<Company, Long> {
 
     @Query(value = "select u from Users u inner join Directorate d on u.id = d.hr inner join Company c on c.fk_directorate = d.id and c.id = ?1")
     List<Users> getCompanyHR(int id);
+
 }
