@@ -9,31 +9,10 @@ import Home from "./components/Home";
 
 import {AuthProvider, useAuth} from "./components/auth";
 import Nav from "./components/Nav";
+import Dashboard from './components/Dashboard';
 
 
 function App(){
-
-  /*
-  const auth = useAuth();
-
-  if("sid" in sessionStorage){
-      Axios({
-          method: "POST",
-          data : {
-              sid: sessionStorage.getItem("sid"),
-          },
-          url: "http://localhost:8000/api/router.php/user/sessionLogin"
-      }).then((res)=>{
-          if (res.status === 200){
-              auth.login(res.data.user);
-          }else if(res.status === 406){
-              console.log(res.data.message);
-          }
-      });
-  }*/
-  // TODO persistent login by session_id saved in sessionStorage
-
-
 
 
   return(
@@ -48,7 +27,7 @@ function App(){
                   <Route path='/login' element={<Login/>} />
                   <Route path='/register' element={<Register/>}/>
                   <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
-
+                  <Route path='/dashboard' element={<RequireAuth><Dashboard/></RequireAuth>}/>
 
                 </Routes>
               </header>

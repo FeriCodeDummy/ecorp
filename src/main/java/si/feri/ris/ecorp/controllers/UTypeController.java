@@ -7,7 +7,7 @@ import si.feri.ris.ecorp.dao.UTypeRepository;
 import si.feri.ris.ecorp.dao.UsersRepository;
 import si.feri.ris.ecorp.models.UType;
 import si.feri.ris.ecorp.models.Users;
-
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/utypes")
 public class UTypeController {

@@ -10,6 +10,8 @@ import si.feri.ris.ecorp.models.Users;
 import java.util.List;
 import java.util.Optional;
 
+
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/company")
 public class CompanyController {

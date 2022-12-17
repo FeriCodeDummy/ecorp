@@ -7,6 +7,8 @@ import si.feri.ris.ecorp.models.Projects;
 
 import java.util.Optional;
 
+
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping("/project")
 public class ProjectController {
