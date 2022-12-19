@@ -8,3 +8,16 @@ npm i --save @fortawesome/pro-light-svg-icons
 npm i --save @fortawesome/pro-duotone-svg-icons
 
 
+npm i fs
+npm i url
+npm i tls
+npm i os
+npm i os-browserify
+npm i stream
+npm i stream-browserify
+npm i crypto-browserify
+npm i crypto
+npm i path
+npm i path-browserify
+npm i assert
+npm i dgram
