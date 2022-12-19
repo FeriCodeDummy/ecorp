@@ -2,6 +2,7 @@ package si.feri.ris.ecorp.controllers;
 
 
 
+import jakarta.mail.MessagingException;
 import netscape.javascript.JSObject;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,23 @@ public class EmailController {
 			senderService.sendEmail(to, subject, message);
 			return "Mail sent successfully";
 		}catch (Exception e){
+			return "Sending failed";
+		}
+	}
+
+	@PostMapping("/sendattachment")
+	public String sendEmailWithAttachment(@RequestBody String body){
+		JSONObject json = new JSONObject(body);
+		String to = json.getString("email");
+		String subject = json.getString("subject");
+		String message = json.getString("message");
+		String attachment = json.getString("attachment");
+
+		try{
+			senderService.sendEmailWithAttachment(to, subject, message, attachment);
+			return "Mail sent successfully";
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return "Sending failed";
 		}
 	}
