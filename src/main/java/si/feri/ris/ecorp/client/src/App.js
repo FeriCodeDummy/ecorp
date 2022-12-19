@@ -10,6 +10,7 @@ import Home from "./components/Home";
 import {AuthProvider, useAuth} from "./components/auth";
 import Nav from "./components/Nav";
 import Dashboard from './components/Dashboard';
+import MailTest from './components/MailTest';
 
 
 function App(){
@@ -28,7 +29,7 @@ function App(){
                   <Route path='/register' element={<Register/>}/>
                   <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
                   <Route path='/dashboard' element={<RequireAuth><Dashboard/></RequireAuth>}/>
-
+                  <Route path='/email' element={<MailTest/>}/>
                 </Routes>
               </header>
             </div>

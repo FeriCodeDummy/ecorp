@@ -48,7 +48,7 @@ function Register(){
 
 	const handleSubmit = event => {
 		event.preventDefault();
-		
+
 	};
 
 	const reroute = (e)=>{

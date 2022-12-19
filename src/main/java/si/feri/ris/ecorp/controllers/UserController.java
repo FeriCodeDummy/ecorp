@@ -4,6 +4,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
 import si.feri.ris.ecorp.dao.UTypeRepository;
 import si.feri.ris.ecorp.dao.UsersRepository;
 import si.feri.ris.ecorp.models.UType;
@@ -34,11 +35,7 @@ public class UserController {
 		user.setPassword(encoder.encode(user.getPassword()));
 		System.out.println(user.getFk_utype());
 		//usersDao.save(user);
-
-
-
 	}
-
 
 	@PostMapping("/login")
 	public Users login(@RequestBody String body){
